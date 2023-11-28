@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.18)
+project(breuk_test)
+include(CTest)
+find_package(Catch2 REQUIRED)
+include(Catch)
+# test_breuk moet een C++ programma zijn
+add_executable(test_breuk test_breuk.cpp breuk.c)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c18 -Wall -Wextra -Wpedantic -g3 -O0")
+target_link_libraries(test_breuk PRIVATE Catch2::Catch2)
+catch_discover_tests(test_breuk)

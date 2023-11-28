@@ -1,0 +1,47 @@
+#include <assert.h>
+
+#include "breuk.h"
+
+static int ggd(int n, int m)
+{
+    if (n < 0) n = -n;
+    if (m < 0) m = -m;
+    while (m != 0)
+    {
+        int t = m;
+    	m = n % m;
+        n = t;
+    }
+    return n;
+}
+
+static Breuk normaliseer(Breuk b)
+{
+    assert(b.noemer != 0);
+    int d;
+    if (b.noemer < 0)
+    {
+        b.noemer = -b.noemer;
+        b.teller = -b.teller;
+    }
+    d = ggd(b.teller, b.noemer);
+    b.teller /= d;
+    b.noemer /= d;
+    return b;
+}
+
+Breuk add(Breuk b1, Breuk b2)
+{
+    Breuk som;
+    som.teller = b1.teller * b2.noemer + b1.noemer * b2.teller;
+    som.noemer = b1.noemer * b2.noemer;
+    return normaliseer(som);
+}
+
+Breuk mul(Breuk b1, Breuk b2)
+{
+    Breuk product;
+    product.teller = b1.teller * b2.teller;
+    product.noemer = b1.noemer * b2.noemer;
+    return normaliseer(product);
+}

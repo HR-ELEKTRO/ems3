@@ -1,0 +1,21 @@
+$ drmemory.exe -batch -leaks_only a.exe
+~~Dr.M~~ Dr. Memory version 2.5.0
+~~Dr.M~~ Running "a.exe"
+~~Dr.M~~ Using system call file C:\Users\Gebruiker\AppData\Roaming\Dr. Memory\symcache\syscalls_x64.txt
+~~Dr.M~~
+~~Dr.M~~ Error #1: LEAK 40 direct bytes 0x000001d2d93e02c0-0x000001d2d93e02e8 + 0 indirect bytes
+~~Dr.M~~ # 0 replace_malloc               [d:\a\drmemory\drmemory\common\alloc_replace.c:2580]
+~~Dr.M~~ # 1 msvcrt.dll!onexit
+~~Dr.M~~ # 2 main
+~~Dr.M~~
+~~Dr.M~~ ERRORS FOUND:
+~~Dr.M~~       0 unique,     0 total invalid heap argument(s)
+~~Dr.M~~       0 unique,     0 total warning(s)
+~~Dr.M~~       1 unique,     1 total,     40 byte(s) of leak(s)
+~~Dr.M~~       0 unique,     0 total,      0 byte(s) of possible leak(s)
+~~Dr.M~~ ERRORS IGNORED:
+~~Dr.M~~       1 potential leak(s) (suspected false positives)
+~~Dr.M~~          (details: C:\Users\Gebruiker\AppData\Roaming\Dr. Memory\DrMemory-a.exe.8912.001\potential_errors.txt)
+~~Dr.M~~       3 unique,     3 total,     38 byte(s) of still-reachable allocation(s)
+~~Dr.M~~          (re-run with "-show_reachable" for details)
+~~Dr.M~~ Details: C:\Users\Gebruiker\AppData\Roaming\Dr. Memory\DrMemory-a.exe.8912.001\results.txt

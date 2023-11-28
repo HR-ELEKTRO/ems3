@@ -1,29 +1,5 @@
-# README #
+# EMS31 - Embedded Systems 3 #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Dit repository is bedoeld voor studenten en docenten van de opleiding Elektrotechniek van de Hogeschool Rotterdam en wordt gebruikt om studiemateriaal voor de cursus "EMS31 - Embedded Systems 3" te verspreiden. 
 
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+Alle informatie is te vinden op de [Wiki](https://bitbucket.org/HR_ELEKTRO/ems31/wiki/).

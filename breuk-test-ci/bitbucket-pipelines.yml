@@ -1,0 +1,20 @@
+# Voorbeeld voor EMS30.
+
+# Docker image gemaakt door Daniël Versluis: deze draait op de laatste gcc image maar bevat nu ook cmake en catch2.
+image: versd/gcc_cmake_catch2:latest
+
+pipelines:
+  branches:
+    master:
+      - step:
+          name: Build
+          script:
+          # Deze file moet in het root directory van je bitbucket repository staan.
+          # Indien nodig, kun je met een cd commando naar het juiste directory gaan.
+          # Bijvoorbeeld:
+            - cd Voorbeelden/breuk-test-ci
+            - mkdir build
+            - mkdir test-results
+            - cmake . -B build/
+            - cmake --build build/ --config Debug --target all
+            - ./build/test_breuk -sr junit > test-results/raportage.xml
