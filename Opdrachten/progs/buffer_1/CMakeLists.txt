@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.18)
+project(buffer)
+add_executable(demo demo.c buffer.c)
+add_executable(test test.c buffer.c)
+target_compile_options(demo PRIVATE -std=c18 -Wall -Wextra -Wpedantic -g3 -O0)
+target_compile_options(test PRIVATE -std=c18 -Wall -Wextra -Wpedantic -g3 -O0)
