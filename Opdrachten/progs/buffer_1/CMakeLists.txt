@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required(VERSION 3.27)
 project(buffer)
 add_executable(demo demo.c buffer.c)
 add_executable(test test.c buffer.c)
