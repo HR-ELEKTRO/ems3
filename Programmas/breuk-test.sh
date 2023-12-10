@@ -1,4 +1,4 @@
-sudo pacman -Sy wget unzip catch2
+sudo pacman -Sy wget unzip gtest
 cd ~ 
 mkdir test 
 cd test 
