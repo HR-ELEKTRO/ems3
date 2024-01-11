@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.27)
 project(breuk_test)
-enable_testing()
 find_package(GTest REQUIRED)
 include(GoogleTest)
 # test_breuk moet een C++ programma zijn

@@ -39,24 +39,10 @@ Breuk add(Breuk b1, Breuk b2)
     return normaliseer(som);
 }
 
-Breuk sub(Breuk b1, Breuk b2)
-{
-    b2.teller = -b2.teller;
-    return add(b1, b2);
-}
-
 Breuk mul(Breuk b1, Breuk b2)
 {
     Breuk product;
     product.teller = b1.teller * b2.teller;
     product.noemer = b1.noemer * b2.noemer;
     return product;
-}
-
-Breuk divide(Breuk b1, Breuk b2)
-{
-    Breuk quotient;
-    quotient.teller = b1.teller * b2.noemer;
-    quotient.noemer = b1.noemer * b2.teller;
-    return quotient;
 }

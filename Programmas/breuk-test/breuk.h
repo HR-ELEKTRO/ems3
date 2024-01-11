@@ -8,8 +8,6 @@ typedef struct
 } Breuk;
 
 Breuk add(Breuk b1, Breuk b2);
-Breuk sub(Breuk b1, Breuk b2);
 Breuk mul(Breuk b1, Breuk b2);
-Breuk divide(Breuk b1, Breuk b2); // name div is already taken by stdlib
 
 #endif
