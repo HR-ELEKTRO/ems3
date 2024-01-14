@@ -2,7 +2,7 @@
 // Include C code in C++ bestand
 extern "C"
 {
-    #include "ems31_2023-2024_groep_00_submodules/buffer_8/buffer.h"
+    #include "ems31_2023-2024_groep_XX_submodules/buffer_8/buffer.h"
 }
 
 void test_put_and_get(int test_value)

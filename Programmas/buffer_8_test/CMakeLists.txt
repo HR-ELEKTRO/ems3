@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.27)
 project(buffer_8_test)
 # test_breuk moet een C++ programma zijn
-add_executable(test_buffer_8 test_buffer_8.cpp ems31_2023-2024_groep_00_submodules/buffer_8/buffer.c)
+add_executable(test_buffer_8 test_buffer_8.cpp ems31_2023-2024_groep_XX_submodules/buffer_8/buffer.c)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c18 -Wall -Wextra -Wpedantic -g3 -O0")
 target_link_libraries(test_buffer_8 GTest::gtest_main)
 include(CTest)
