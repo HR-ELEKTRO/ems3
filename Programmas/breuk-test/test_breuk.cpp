@@ -43,4 +43,3 @@ TEST(breuken, nul)
     EXPECT_EQ(d.teller, 0);
     EXPECT_EQ(d.noemer, 1);
 } 
-
