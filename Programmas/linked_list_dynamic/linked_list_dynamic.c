@@ -35,11 +35,13 @@ int main(void)
         newNode->next = NULL;
         if (head == NULL)
         {
-            head = tail = newNode;
+            head = newNode;
+            tail = newNode;
         }
         else
         {
-            tail = tail->next = newNode;
+            tail->next = newNode;
+            tail = tail->next;
         }
     }
 
