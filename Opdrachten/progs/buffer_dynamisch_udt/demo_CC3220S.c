@@ -148,8 +148,8 @@ void *main_thread(void *arg)
     check( pthread_mutex_destroy(&m2) );
     check( pthread_mutexattr_destroy(&ma) );
 
-    delete_buffer(a1.b);
-    delete_buffer(a2.b);
+    delete_buffer(&a1.b);
+    delete_buffer(&a2.b);
 
     return NULL;
 }

@@ -11,8 +11,8 @@ typedef struct buffer_tag *buffer;
 // returns NULL on failure
 buffer new_buffer(void);
 
-// delete a buffer b
-void delete_buffer(buffer b);
+// delete a buffer pointed to by pb
+void delete_buffer(buffer *pb);
 
 // put value i in buffer b if buffer b is not full
 // returns true on success or false otherways
