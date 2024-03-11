@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.27)
 project(breuk_test)
-include(CTest)
-find_package(Catch2 REQUIRED)
-include(Catch)
 # test_breuk moet een C++ programma zijn
 add_executable(test_breuk test_breuk.cpp breuk.c)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c18 -Wall -Wextra -Wpedantic -g3 -O0 --coverage")
-target_link_libraries(test_breuk PRIVATE Catch2::Catch2)
-target_link_libraries(test_breuk PRIVATE gcov)
-catch_discover_tests(test_breuk)
+target_link_libraries(test_breuk GTest::gtest_main gcov)
+include(CTest)
+find_package(GTest REQUIRED)
+include(GoogleTest)
+gtest_discover_tests(test_breuk)
+# coverage output files staan in: ./build/CMakeFiles/test_breuk.dir/

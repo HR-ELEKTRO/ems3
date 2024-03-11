@@ -1,6 +1,0 @@
-{
-    "cmake.sourceDirectory": "${workspaceFolder}/.",
-    "gcovViewer.buildDirectories": [
-        "/home/ems/Voorbeelden/breuk-test-coverage/build"
-    ]
-}
