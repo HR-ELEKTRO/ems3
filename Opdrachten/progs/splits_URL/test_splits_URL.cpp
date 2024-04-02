@@ -21,6 +21,12 @@ TEST(split_URL, geldig)
     EXPECT_EQ(res.domein, "bitbucket.org");
     EXPECT_EQ(res.directory, "HR_ELEKTRO/ems31/src/master");
     EXPECT_EQ(res.file, "");
+    res = splits_URL("https://www.koninklijkhuis.nl/");
+    EXPECT_EQ(res.geldig, true);
+    EXPECT_EQ(res.protocol, "https");
+    EXPECT_EQ(res.domein, "www.koninklijkhuis.nl");
+    EXPECT_EQ(res.directory, "");
+    EXPECT_EQ(res.file, "");
     res = splits_URL("https://www.hr.nl");
     EXPECT_EQ(res.geldig, true);
     EXPECT_EQ(res.protocol, "https");
