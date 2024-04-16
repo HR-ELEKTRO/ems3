@@ -5,42 +5,9 @@
 #include <random>
 #include <iterator>
 
+#include "stopwatch.h"
+
 using namespace std;
-
-// class to measure time in ms
-class Stopwatch {
-public:
-    Stopwatch();
-    void start();
-    void stop();
-private:
-    bool running;
-    chrono::time_point<chrono::high_resolution_clock> start_time;
-    chrono::time_point<chrono::high_resolution_clock> stop_time;
-friend ostream& operator<<(ostream& o, const Stopwatch& sw);
-};
-
-Stopwatch::Stopwatch(): running{false} {
-}
-
-void Stopwatch::start() {
-    if (!running) {
-        running = true;
-        start_time = chrono::high_resolution_clock::now();
-    }
-}
-
-void Stopwatch::stop() {
-    if (running) {
-        running = false;
-        stop_time = chrono::high_resolution_clock::now();
-    }
-}
-
-ostream& operator<<(ostream& o, const Stopwatch& sw) {
-    auto total_time {chrono::duration_cast<chrono::milliseconds>(sw.stop_time - sw.start_time).count()};
-    return o << total_time << " ms";
-}
 
 template <typename Container>
 void vul_met_meerderheids_element(Container& c) {
@@ -102,7 +69,8 @@ bool test_meerderheids_element(zoek_meerderheids_element fp) {
 }
 
 int main() {
-    zoek_meerderheids_element te_testen_functie {zoek_meerderheids_element_methode_3};
+    zoek_meerderheids_element te_testen_functie {nullptr};
+    te_testen_functie = zoek_meerderheids_element_methode_1;
     if (test_meerderheids_element(*te_testen_functie)) {
         size_t n {1};
         while (n > 0) {
@@ -116,7 +84,7 @@ int main() {
                     cout << '\n';
                 }
                 Stopwatch sw;
-                int res;
+                int res {0};
                 sw.start();
                 bool gevonden {(*te_testen_functie)(res, v)};
                 sw.stop();
