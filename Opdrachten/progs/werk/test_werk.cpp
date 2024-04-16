@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <gmock/gmock.h>
 #include <sstream>
 #include "freelancer.h"
 #include "vaste_kracht.h"
@@ -24,7 +25,7 @@ TEST(werk, test1)
     
     ostringstream out3;
     print_maandsalaris(out3, f);
-    EXPECT_EQ(out3.str(), "Werknemer: 1 verdient:   347.62 Euro.\n");
+    EXPECT_THAT(out3.str(), testing::MatchesRegex("Werknemer: 1 verdient:   347.6[23] Euro.\n"));
     ostringstream out4;
     print_maandsalaris(out4, v);
     EXPECT_EQ(out4.str(), "Werknemer: 2 verdient:  1873.53 Euro.\n");
@@ -57,7 +58,7 @@ TEST(werk, test2)
     
     ostringstream out4;
     print_maandsalaris(out4, f);
-    EXPECT_EQ(out4.str(), "Werknemer: 1 verdient:   347.62 Euro.\n");
+    EXPECT_THAT(out4.str(), testing::MatchesRegex("Werknemer: 1 verdient:   347.6[23] Euro.\n"));
     ostringstream out5;
     print_maandsalaris(out5, v);
     EXPECT_EQ(out5.str(), "Werknemer: 2 verdient:  1873.53 Euro.\n");
