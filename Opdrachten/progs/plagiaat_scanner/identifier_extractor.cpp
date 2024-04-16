@@ -4,25 +4,10 @@
 #include <vector>
 #include <string>
 #include <cctype>
-using namespace std;
 
-class Identifier_extractor {
-public:
-    explicit Identifier_extractor(string filename);
-    vector<string> get_identifiers() const;
-private:
-    vector<string> identifiers;
-    vector<char> all_chars;
-    vector<char>::iterator begin;
-    vector<char>::iterator end;
-    void skip(int number_of_chars_to_skip = 1);
-    void skip_line_comment();
-    void skip_block_comment();
-    void skip_char_string_literal();
-    void skip_raw_string_literal();
-    void skip_numeric_literal();
-    void add_identifier();
-};
+#include "identifier_extractor.h"
+
+using namespace std;
 
 Identifier_extractor::Identifier_extractor(string filename) {
     ifstream inf {filename};
@@ -32,7 +17,6 @@ Identifier_extractor::Identifier_extractor(string filename) {
         copy(istream_begin, istream_end, back_inserter(all_chars));
         begin = all_chars.begin();
         end = all_chars.end();
-        string last_id;
         while (begin != end) {
             switch (*begin) {
                 case '/':  
@@ -88,7 +72,7 @@ Identifier_extractor::Identifier_extractor(string filename) {
         }
     }
     else {
-        cout << "Error: kan bestand " << filename << " niet openen.\n";
+        cerr << "Error: kan bestand " << filename << " niet openen.\n";
     }
 }
 
@@ -144,7 +128,6 @@ void Identifier_extractor::skip_raw_string_literal() {
             delimiter+=*begin++;
         }
         delimiter+='\"';
-        cout << "DELIMITER<" << delimiter << "> ";
         skip();
         bool delimiter_found {false};
         while (!delimiter_found) {
@@ -182,19 +165,4 @@ void Identifier_extractor::add_identifier() {
         id+=*begin++;
     }
     identifiers.push_back(id);
-}
-
-int main(int argc, char* argv[]) {
-    string filename;
-    if (argc == 2) {
-        filename = argv[1];
-    }
-    else {
-        cout << "Geef filenaam: ";
-        cin >> filename;
-    }
-    Identifier_extractor ie {filename};
-    auto ids {ie.get_identifiers()};
-    ostream_iterator<string> iout {cout, " "};
-    copy(ids.cbegin(), ids.cend(), iout);
 }
