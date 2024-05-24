@@ -5,42 +5,9 @@
 #include <random>
 #include <iterator>
 
+#include "stopwatch.h"
+
 using namespace std;
-
-// class to measure time in ms 
-class Stopwatch {
-public:
-    Stopwatch();
-    void start();
-    void stop();
-private:
-    bool running;
-    chrono::time_point<chrono::high_resolution_clock> start_time;
-    chrono::time_point<chrono::high_resolution_clock> stop_time;
-friend ostream& operator<<(ostream& o, const Stopwatch& sw);
-};
-
-Stopwatch::Stopwatch(): running{false} {
-}
-
-void Stopwatch::start() {
-    if (!running) {
-        running = true;
-        start_time = chrono::high_resolution_clock::now();
-    }
-}
-
-void Stopwatch::stop() {
-    if (running) {
-        running = false;
-        stop_time = chrono::high_resolution_clock::now();
-    }
-}
-
-ostream& operator<<(ostream& o, const Stopwatch& sw) {
-    auto total_time {chrono::duration_cast<chrono::milliseconds>(sw.stop_time - sw.start_time).count()};
-    return o << total_time << " ms";
-}
 
 template <typename Element>
 void selection_sort(vector<Element>& v) {
@@ -113,7 +80,7 @@ int main() {
                 cout << "\nDe gesorteerde array:\n";
                 copy(v.cbegin (), v.cend (), ostream_iterator<int>{cout , " "});
             }
-            cout << "\nTijdsduur: " << sw << endl;
+            cout << "Tijdsduur: " << sw << "\n";
         }
     } while (n > 0);
 }

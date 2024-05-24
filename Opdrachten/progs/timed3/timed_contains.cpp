@@ -5,42 +5,9 @@
 #include <random>
 #include <iterator>
 
+#include "stopwatch.h"
+
 using namespace std;
-
-// class to measure time in ms
-class Stopwatch {
-public:
-    Stopwatch();
-    void start();
-    void stop();
-private:
-    bool running;
-    chrono::time_point<chrono::high_resolution_clock> start_time;
-    chrono::time_point<chrono::high_resolution_clock> stop_time;
-friend ostream& operator<<(ostream& o, const Stopwatch& sw);
-};
-
-Stopwatch::Stopwatch(): running{false} {
-}
-
-void Stopwatch::start() {
-    if (!running) {
-        running = true;
-        start_time = chrono::high_resolution_clock::now();
-    }
-}
-
-void Stopwatch::stop() {
-    if (running) {
-        running = false;
-        stop_time = chrono::high_resolution_clock::now();
-    }
-}
-
-ostream& operator<<(ostream& o, const Stopwatch& sw) {
-    auto total_time {chrono::duration_cast<chrono::milliseconds>(sw.stop_time - sw.start_time).count()};
-    return o << total_time << " ms";
-}
 
 void vul_random_0_999(vector<int>& v) {
     default_random_engine eng;
@@ -60,6 +27,17 @@ bool contains_element_method_1(const vector<int>& v, int e) {
 
 bool contains_element_method_2(const vector<int>& v, int e) {
     // Voeg hier je code toe
+    return false;
+}
+
+bool contains_element_method_3(const vector<int>& v, int e) {
+    // Voeg hier je code toe
+    return false;
+}
+
+bool contains_element_method_4(const vector<int>& v, int e) {
+    // Voeg hier je code toe
+    return false;
 }
 
 using function_pointer = bool (*)(const vector<int>& v, int e);
