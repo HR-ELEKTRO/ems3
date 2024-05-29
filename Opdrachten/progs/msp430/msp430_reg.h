@@ -1,7 +1,7 @@
 #include <cstdint>
 
-#ifndef HR_EMS30_REG_H_
-#define HR_EMS30_REG_H_
+#ifndef HR_EMS31_REG_H_
+#define HR_EMS31_REG_H_
 
 //  Base addresses
     constexpr std::uint16_t PORT1 = UINT16_C(0x0020);
