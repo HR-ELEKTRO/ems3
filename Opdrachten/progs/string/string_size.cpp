@@ -1,8 +1,7 @@
-#include <string>
-#include <iostream>
+import std;
 using namespace std;
 
 int main() {
 	string naam {"Willem-Alexander"};
-	cout << "De naam " << naam << " bevat " << naam.size() << " karakters.\n";
+	println("De naam {} bevat {} karakters.", naam, naam.size());
 }

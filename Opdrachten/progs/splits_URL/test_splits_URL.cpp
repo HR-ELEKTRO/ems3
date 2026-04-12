@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "splits_URL.h"
+import splits_URL;
 
 TEST(split_URL, geldig)
 {

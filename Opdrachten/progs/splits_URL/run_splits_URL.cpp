@@ -1,21 +1,19 @@
-#include <iostream>
-#include <string>
-#include "splits_URL.h"
-
+import std;
+import splits_URL;
 using namespace std;
 
 int main() {
-    cout << "Geef een URL: ";
+    print("Geef een URL: ");
     string URL;
     cin >> URL;
     gesplitste_URL res {splits_URL(URL)};
     if (res.geldig) {
-        cout << "Protocol: " << res.protocol << '\n';
-        cout << "Domein:   " << res.domein << '\n';
-        cout << "Directory: " << res.directory << '\n';
-        cout << "File:   " << res.file << '\n';
+        println("Protocol: {}", res.protocol);
+        println("Domein:   {}", res.domein);
+        println("Directory: {}", res.directory);
+        println("File:   {}", res.file);
     }
     else {
-        cout << URL << " is geen geldige URL!\n";
+        println("{} is geen geldige URL!", URL);
     }
 }

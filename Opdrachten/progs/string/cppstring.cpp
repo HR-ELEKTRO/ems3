@@ -1,14 +1,13 @@
-#include <string> // Zie opmerking 1.
-#include <iostream>
+import std; // Zie opmerking 1.
 using namespace std;
 
 int main() {
 	string naam;
 	naam = "Harry"; // Zie opmerking 2.
-	cout << naam << endl;
+	println("{}", naam);
 	naam = "Willem-Alexander"; // Zie opmerking 3.
-	cout << naam << '\n';
+	println("{}", naam);
 	if (naam == "Willem-Alexander") { // Zie opmerking 4.
-		cout << "Hoi Alex!\n";
+		println("Hoi Alex!");
 	}
 }

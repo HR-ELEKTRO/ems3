@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "splits_emailadres.h"
+import splits_emailadres;
 
 TEST(splits_emailadres, geldig)
 {

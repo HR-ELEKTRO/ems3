@@ -1,6 +1,5 @@
-#include <string>
-#include "splits_emailadres.h"
-
+module splits_emailadres;
+import std;
 using namespace std;
 
 gesplitst_emailadres splits_emailadres(string emailadres) {
