@@ -1,8 +1,7 @@
-#include <iostream>
-#include <iomanip>
-#include "tijd2.h"
-
+module tijd2;
+import std;
 using namespace std;
+
 
 // De definities van de memberfunctie van de ADT Tijdsduur, oftewel: de implementatie van de ADT Tijdsduur:
 
@@ -11,14 +10,14 @@ using namespace std;
 ostream& operator<<(ostream& o, const Tijdsduur& t) {
     if (t.uur == 0) {
         if (t.min == 0) {
-            o << t.sec;
+            print(o, "{}", t.sec);
         }
         else {
-            o << t.min << ':' << setw(2) << setfill('0') << t.sec;
+            print(o, "{}:{:02}", t.min, t.sec);
         }
     }
     else {
-        o << t.uur<< ':' << setw(2) << setfill('0') << t.min << ':' << setw(2) << setfill('0') << t.sec;
+        print(o, "{}:{:02}:{:02}", t.uur, t.min, t.sec);
     }
     return o;
 }

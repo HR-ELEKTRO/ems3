@@ -1,24 +1,22 @@
-#include <iostream>
-#include <iomanip>
-#include "tijd1.h"
-
+module tijd1;
+import std;
 using namespace std;
 
 // De definities van de memberfunctie van de ADT Tijdsduur, oftewel: de implementatie van de ADT Tijdsduur:
 
 // ...
 
-void Tijdsduur::print(ostream& out) const {
+void Tijdsduur::drukaf(ostream& out) const {
     if (uur == 0) {
         if (min == 0) {
-            out << sec;
+            print(out, "{}", sec);
         }
         else {
-            out << min << ':' << setw(2) << setfill('0') << sec;
+            print(out, "{}:{:02d}", min, sec);
         }
     }
     else {
-        out << uur<< ':' << setw(2) << setfill('0') << min << ':' << setw(2) << setfill('0') << sec;
+        print(out, "{}:{:02d}:{:02d}", uur, min, sec);
     }
 }
 

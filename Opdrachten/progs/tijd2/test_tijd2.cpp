@@ -1,85 +1,70 @@
 #include <gtest/gtest.h>
-#include <string>
-#include <sstream>
-#include "tijd2.h"
-
+import std;
+import tijd2;
 using namespace std;
 
 TEST(Tijdsduur, aanmaken_zonder_argumenten)
 {
     Tijdsduur t1; // t1 is 0 uur, 0 minuten en 0 seconden
-    ostringstream out1;
-    out1 << t1;
-    EXPECT_EQ(out1.str(), "0");
+    string out1 {format("{}", t1)};
+    EXPECT_EQ(out1, "0");
 }
 
 /*
 TEST(Tijdsduur, aanmaken_alleen_seconden)
 {
     Tijdsduur t1 {10}; // t1 is 10 seconden
-    ostringstream out1;
-    out1 << t1;
-    EXPECT_EQ(out1.str(), "10");
+    string out1 {format("{}", t1)};
+    EXPECT_EQ(out1, "10");
     Tijdsduur t2 {0}; // t2 is 0 seconden
-    ostringstream out2;
-    out2 << t2;
-    EXPECT_EQ(out2.str(), "0");
+    string out2 {format("{}", t2)};
+    EXPECT_EQ(out2, "0");
 }
 
 TEST(Tijdsduur, aanmaken_alleen_minuten_en_seconden)
 {
     Tijdsduur t1 {50, 10}; // t1 is 50 minuten en 10 seconden
-    ostringstream out1;
-    out1 << t1;
-    EXPECT_EQ(out1.str(), "50:10");
+    string out1 {format("{}", t1)};
+    EXPECT_EQ(out1, "50:10");
     Tijdsduur t2 {50, 0}; // t2 is 50 minuten en 0 seconden
-    ostringstream out2;
-    out2 << t2;
-    EXPECT_EQ(out2.str(), "50:00");
+    string out2 {format("{}", t2)};
+    EXPECT_EQ(out2, "50:00");
 }
 
 TEST(Tijdsduur, aanmaken_uren_minuten_en_seconden)
 {
     Tijdsduur t1 {3, 50, 10}; // t1 is 3 uur, 50 minuten en 10 seconden
-    ostringstream out1;
-    out1 << t1;
-    EXPECT_EQ(out1.str(), "3:50:10");
+    string out1 {format("{}", t1)};
+    EXPECT_EQ(out1, "3:50:10");
     Tijdsduur t2 {2, 1, 0}; // t2 is 2 uur, 1 minuut en 0 seconden
-    ostringstream out2;
-    out2 << t2;
-    EXPECT_EQ(out2.str(), "2:01:00");
+    string out2 {format("{}", t2)};
+    EXPECT_EQ(out2, "2:01:00");
 }
 
 TEST(Tijdsduur, normaliseer)
 {
     Tijdsduur t1 {3, 122}; // t1 is 3 minuten en 122 seconden
-    ostringstream out1;
-    out1 << t1;
-    EXPECT_EQ(out1.str(), "5:02"); // 3 minuten en 122 seconden is 5 minuten en 2 seconden
+    string out1 {format("{}", t1)};
+    EXPECT_EQ(out1, "5:02"); // 3 minuten en 122 seconden is 5 minuten en 2 seconden
     Tijdsduur t2 {3, -122}; // t2 is 3 minuten en -122 seconden
-    ostringstream out2;
-    out2 << t2;
-    EXPECT_EQ(out2.str(), "58"); // 3 minuten en -122 seconden is 58 seconden
+    string out2 {format("{}", t2)};
+    EXPECT_EQ(out2, "58"); // 3 minuten en -122 seconden is 58 seconden
     Tijdsduur t3 {60, -120, -61}; // t3 is 60 minuten, -120 seconden en -61 seconden
-    ostringstream out3;
-    out3 << t3;
-    EXPECT_EQ(out3.str(), "57:58:59"); // 60 minuten, -120 seconden en -61 seconden is 57 minuten, 58 seconden en 59 seconden
+    string out3 {format("{}", t3)};
+    EXPECT_EQ(out3, "57:58:59"); // 60 minuten, -120 seconden en -61 seconden is 57 minuten, 58 seconden en 59 seconden
 }
 
 TEST(Tijdsduur, const_aanmaken)
 {
     const Tijdsduur t1 {3, 50, 10}; // t1 is 3 uur, 50 minuten en 10 seconden
-    ostringstream out1;
-    out1 << t1;
-    EXPECT_EQ(out1.str(), "3:50:10");
+    string out1 {format("{}", t1)};
+    EXPECT_EQ(out1, "3:50:10");
     const Tijdsduur t2 {3, -122}; // t2 is 3 minuten en -122 seconden
-    ostringstream out2;
-    out2 << t2;
-    EXPECT_EQ(out2.str(), "58"); // 3 minuten en -122 seconden is 58 seconden
+    string out2 {format("{}", t2)};
+    EXPECT_EQ(out2, "58"); // 3 minuten en -122 seconden is 58 seconden
     const Tijdsduur t3 {60, -120, -61}; // t3 is 60 minuten, -120 seconden en -61 seconden
-    ostringstream out3;
-    out3 << t3;
-    EXPECT_EQ(out3.str(), "57:58:59"); // 60 minuten, -120 seconden en -61 seconden is 57 minuten, 58 seconden en 59 seconden
+    string out3 {format("{}", t3)};
+    EXPECT_EQ(out3, "57:58:59"); // 60 minuten, -120 seconden en -61 seconden is 57 minuten, 58 seconden en 59 seconden
 }
 
 TEST(Tijdsduur, optellen)
@@ -87,19 +72,16 @@ TEST(Tijdsduur, optellen)
     Tijdsduur t1 {3, 50, 10}; // t1 is 3 uur, 50 minuten en 10 seconden
     const Tijdsduur kwartier {15, 0}; // kwartier is 15 minuten
     t1 += kwartier; 
-    ostringstream out1;
-    out1 << t1;
-    EXPECT_EQ(out1.str(), "4:05:10"); // 3 uur, 50 minuten en 10 seconden plus 15 minuten is 4 uur, 5 minuten en 10 seconden
+    string out1 {format("{}", t1)};
+    EXPECT_EQ(out1, "4:05:10"); // 3 uur, 50 minuten en 10 seconden plus 15 minuten is 4 uur, 5 minuten en 10 seconden
     Tijdsduur t2 {3, 2, 1}; // t2 is 3 uur, 2 minuten en 1 seconde
     Tijdsduur t3 {2, 58, 59}; // t3 is 2 uur, 58 minuten en 59 seconden
     t2 += t3;
-    ostringstream out2;
-    out2 << t2;
-    EXPECT_EQ(out2.str(), "6:01:00"); // 3 uur, 2 minuten en 1 seconde plus 2 uur, 58 minuten en 59 seconden is 6 uur, 1 minuut en 0 seconden
+    string out2 {format("{}", t2)};
+    EXPECT_EQ(out2, "6:01:00"); // 3 uur, 2 minuten en 1 seconde plus 2 uur, 58 minuten en 59 seconden is 6 uur, 1 minuut en 0 seconden
     t3 += 1; // Integer 1 moet automatisch geconverteerd worden naar Tijdsduur{0, 0, 1} en dan opgeteld worden
-    ostringstream out3;
-    out3 << t3;
-    EXPECT_EQ(out3.str(), "2:59:00"); // 2 uur, 58 minuten en 59 seconden plus 1 seconde is 2 uur, 59 minuten en 0 seconden
+    string out3 {format("{}", t3)};
+    EXPECT_EQ(out3, "2:59:00"); // 2 uur, 58 minuten en 59 seconden plus 1 seconde is 2 uur, 59 minuten en 0 seconden
 }
 
 TEST(Tijdsduur, kopie_aanmaken)
@@ -107,12 +89,10 @@ TEST(Tijdsduur, kopie_aanmaken)
     Tijdsduur t1 {3, 50, 10}; // t1 is 3 uur, 50 minuten en 10 seconden
     Tijdsduur t2 {t1}; // t2 is een kopie van t1
     t1 += 15;
-    ostringstream out1;
-    out1 << t1;
-    EXPECT_EQ(out1.str(), "3:50:25"); // 3 uur, 50 minuten en 10 seconden plus 15 seconden is 3 uur, 50 minuten en 25 seconden
-    ostringstream out2;
-    out2 << t2;
-    EXPECT_EQ(out2.str(), "3:50:10"); // t2 is een kopie van de originele t1 en is dus 3 uur, 50 minuten en 10 seconden
+    string out1 {format("{}", t1)};
+    EXPECT_EQ(out1, "3:50:25"); // 3 uur, 50 minuten en 10 seconden plus 15 seconden is 3 uur, 50 minuten en 25 seconden
+    string out2 {format("{}", t2)};
+    EXPECT_EQ(out2, "3:50:10"); // t2 is een kopie van de originele t1 en is dus 3 uur, 50 minuten en 10 seconden
 }
 
 TEST(Tijdsduur, aftrekken)
@@ -120,33 +100,28 @@ TEST(Tijdsduur, aftrekken)
     Tijdsduur t1 {3, 50, 10}; // t1 is 3 uur, 50 minuten en 10 seconden
     const Tijdsduur kwartier {15, 0}; // kwartier is 15 minuten
     t1 -= kwartier;
-    ostringstream out1;
-    out1 << t1;
-    EXPECT_EQ(out1.str(), "3:35:10"); // 3 uur, 50 minuten en 10 seconden min 15 minuten is 3 uur, 35 minuten en 10 seconden
+    string out1 {format("{}", t1)};
+    EXPECT_EQ(out1, "3:35:10"); // 3 uur, 50 minuten en 10 seconden min 15 minuten is 3 uur, 35 minuten en 10 seconden
     Tijdsduur t2 {3, 2, 1}; // t2 is 3 uur, 2 minuten en 1 seconde
     Tijdsduur t3 {2, 58, 59}; // t3 is 2 uur, 58 minuten en 59 seconden
     t2 -= t3;
-    ostringstream out2;
-    out2 << t2;
-    EXPECT_EQ(out2.str(), "3:02"); // 3 uur, 2 minuten en 1 seconde min 2 uur, 58 minuten en 59 seconden is 3 minuten en 2 seconden
+    string out2 {format("{}", t2)};
+    EXPECT_EQ(out2, "3:02"); // 3 uur, 2 minuten en 1 seconde min 2 uur, 58 minuten en 59 seconden is 3 minuten en 2 seconden
     t3 -= 1; // Integer 1 moet automatisch geconverteerd worden naar Tijdsduur{0, 0, 1} en dan afgetrokken worden
-    ostringstream out3;
-    out3 << t3;
-    EXPECT_EQ(out3.str(), "2:58:58"); // 2 uur, 58 minuten en 59 seconden min 1 seconde is 2 uur, 58 minuten en 58 seconden
+    string out3 {format("{}", t3)};
+    EXPECT_EQ(out3, "2:58:58"); // 2 uur, 58 minuten en 59 seconden min 1 seconde is 2 uur, 58 minuten en 58 seconden
 }
 
 TEST(Tijdsduur, vermenigvuldigen)
 {
     Tijdsduur t1 {3, 50, 10}; // t1 is 3 uur, 50 minuten en 10 seconden
     t1 *= 2;
-    ostringstream out1;
-    out1 << t1;
-    EXPECT_EQ(out1.str(), "7:40:20"); // 3 uur, 50 minuten en 10 seconden maal 2 is 7 uur, 40 minuten en 20 seconden
+    string out1 {format("{}", t1)};
+    EXPECT_EQ(out1, "7:40:20"); // 3 uur, 50 minuten en 10 seconden maal 2 is 7 uur, 40 minuten en 20 seconden
     Tijdsduur t2 {15}; // t2 is 15 seconden
     t2 *= 5;
-    ostringstream out2;
-    out2 << t2;
-    EXPECT_EQ(out2.str(), "1:15"); // 15 seconden maal 5 is 1 minuut en 15 seconden
+    string out2 {format("{}", t2)};
+    EXPECT_EQ(out2, "1:15"); // 15 seconden maal 5 is 1 minuut en 15 seconden
 }
 
 TEST(Tijdsduur, meerdere_plus_is_operatoren_in_expressie)
@@ -155,28 +130,22 @@ TEST(Tijdsduur, meerdere_plus_is_operatoren_in_expressie)
     Tijdsduur t2 {4, 5, 6};
     Tijdsduur t3 {7, 8, 9};
     t1 += t2 += t3;
-    ostringstream out1;
-    out1 << t1;
-    EXPECT_EQ(out1.str(), "12:15:18"); // 1:02:03 + 4:05:06 + 7:08:09 = 12:15:18
-    ostringstream out2;
-    out2 << t2;
-    EXPECT_EQ(out2.str(), "11:13:15"); // 4:05:06 + 7:08:09 = 11:13:15
-    ostringstream out3;
-    out3 << t3;
-    EXPECT_EQ(out3.str(), "7:08:09"); // 7:08:09 is ongewijzigd
+    string out1 {format("{}", t1)};
+    EXPECT_EQ(out1, "12:15:18"); // 1:02:03 + 4:05:06 + 7:08:09 = 12:15:18
+    string out2 {format("{}", t2)};
+    EXPECT_EQ(out2, "11:13:15"); // 4:05:06 + 7:08:09 = 11:13:15
+    string out3 {format("{}", t3)};
+    EXPECT_EQ(out3, "7:08:09"); // 7:08:09 is ongewijzigd
     Tijdsduur t4 {1, 2, 3};
     Tijdsduur t5 {4, 5, 6};
     Tijdsduur t6 {7, 8, 9};
     (t4 += t5) += t6;
-    ostringstream out4;
-    out4 << t4;
-    EXPECT_EQ(out4.str(), "12:15:18"); // 1:02:03 + 4:05:06 + 7:08:09 = 12:15:18
-    ostringstream out5;
-    out5 << t5;
-    EXPECT_EQ(out5.str(), "4:05:06"); // 4:05:06 is ongewijzigd
-    ostringstream out6;
-    out6 << t6;
-    EXPECT_EQ(out6.str(), "7:08:09"); // 7:08:09 is ongewijzigd
+    string out4 {format("{}", t4)};
+    EXPECT_EQ(out4, "12:15:18"); // 1:02:03 + 4:05:06 + 7:08:09 = 12:15:18
+    string out5 {format("{}", t5)};
+    EXPECT_EQ(out5, "4:05:06"); // 4:05:06 is ongewijzigd
+    string out6 {format("{}", t6)};
+    EXPECT_EQ(out6, "7:08:09"); // 7:08:09 is ongewijzigd
 }
 
 TEST(Tijdsduur, meerdere_min_is_operatoren_in_expressie)
@@ -185,36 +154,29 @@ TEST(Tijdsduur, meerdere_min_is_operatoren_in_expressie)
     Tijdsduur t2 {4, 5, 6};
     Tijdsduur t3 {7, 8, 9};
     t3 -= t2 -= t1;
-    ostringstream out3;
-    out3 << t3;
-    EXPECT_EQ(out3.str(), "4:05:06"); // 7:08:09 - (4:05:06 - 1:02:03) = 7:08:09 - 3:03:03 = 4:05:06
-    ostringstream out2;
-    out2 << t2;
-    EXPECT_EQ(out2.str(), "3:03:03"); // 4:05:06 - 1:02:03 = 3:03:03
-    ostringstream out1;
-    out1 << t1;
-    EXPECT_EQ(out1.str(), "1:02:03"); // 1:02:03 is ongewijzigd
+    string out3 {format("{}", t3)};
+    EXPECT_EQ(out3, "4:05:06"); // 7:08:09 - (4:05:06 - 1:02:03) = 7:08:09 - 3:03:03 = 4:05:06
+    string out2 {format("{}", t2)};
+    EXPECT_EQ(out2, "3:03:03"); // 4:05:06 - 1:02:03 = 3:03:03
+    string out1 {format("{}", t1)};
+    EXPECT_EQ(out1, "1:02:03"); // 1:02:03 is ongewijzigd
     Tijdsduur t4 {1, 2, 3};
     Tijdsduur t5 {4, 5, 6};
     Tijdsduur t6 {7, 8, 9};
     (t6 -= t5) -= t4;
-    ostringstream out6;
-    out6 << t6;
-    EXPECT_EQ(out6.str(), "2:01:00"); // 7:08:09 - 4:05:06 - 1:02:03 = 2:01:00
-    ostringstream out5;
-    out5 << t5;
-    EXPECT_EQ(out5.str(), "4:05:06"); // 4:05:06 is ongewijzigd
-    ostringstream out4;
-    out4 << t4;
-    EXPECT_EQ(out4.str(), "1:02:03"); // 1:02:03 is ongewijzigd
+    string out6 {format("{}", t6)};
+    EXPECT_EQ(out6, "2:01:00"); // 7:08:09 - 4:05:06 - 1:02:03 = 2:01:00
+    string out5 {format("{}", t5)};
+    EXPECT_EQ(out5, "4:05:06"); // 4:05:06 is ongewijzigd
+    string out4 {format("{}", t4)};
+    EXPECT_EQ(out4, "1:02:03"); // 1:02:03 is ongewijzigd
 }
 
 TEST(Tijdsduur, meerdere_maal_is_operatoren_in_expressie)
 {
     Tijdsduur t1 {1, 2, 3};
     (t1 *= 2) *= 5;
-    ostringstream out1;
-    out1 << t1;
-    EXPECT_EQ(out1.str(), "10:20:30"); // 1:02:03 * 10 = 10:20:30
+    string out1 {format("{}", t1)};
+    EXPECT_EQ(out1, "10:20:30"); // 1:02:03 * 10 = 10:20:30
 }
 */

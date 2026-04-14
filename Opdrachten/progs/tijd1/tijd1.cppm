@@ -1,13 +1,12 @@
-#ifndef _HR_BroJZ_Tijd1_
-#define _HR_BroJZ_Tijd1_
-
-#include <iostream>
+export module tijd1;
+import std;
+using namespace std;
 
 // De declaratie van de UDT Tijdsduur:
-class Tijdsduur {
+export class Tijdsduur {
 public:
     // ...
-    void print(std::ostream& out) const;
+    void drukaf(ostream& out) const;
     // ...
 private:
     void normaliseer();
@@ -15,5 +14,3 @@ private:
     int min;
     int sec;
 };
-
-#endif
