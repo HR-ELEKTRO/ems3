@@ -1,6 +1,5 @@
-#include <array>
-#include "delay_line.h"
-
+module delay_line;
+import std;
 using namespace std;
 
 Delay_line::Delay_line(): buffer{}, index{0}, get_called{false} {

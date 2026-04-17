@@ -1,7 +1,6 @@
 #include <gtest/gtest.h>
-#include <sstream>
-#include "delay_line.h"
-
+import std;
+import delay_line;
 using namespace std;
 
 TEST(delay_line, int)

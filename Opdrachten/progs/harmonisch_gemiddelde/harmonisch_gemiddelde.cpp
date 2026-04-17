@@ -1,6 +1,5 @@
-#include <vector>
-#include "harmonisch_gemiddelde.h"
-
+module harmonisch_gemiddelde;
+import std;
 using namespace std;
 
 double harmonisch_gemiddelde(const vector<double>& v) {
