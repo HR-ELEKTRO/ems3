@@ -1,4 +1,5 @@
-#include "freelancer.h"
+module freelancer;
+import werknemer;
 
 Freelancer::Freelancer(int n, double s): Werknemer{n}, salaris_per_uur{s}, gewerkte_uren{0} {
 }

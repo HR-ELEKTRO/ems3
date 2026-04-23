@@ -1,7 +1,6 @@
-#ifndef _HR_BroJZ_Werknemer_
-#define _HR_BroJZ_Werknemer_
+export module werknemer;
 
-class Werknemer {
+export class Werknemer {
 public:
     Werknemer(int n);
     virtual ~Werknemer() = default;
@@ -10,5 +9,3 @@ public:
 private:
     int nummer;
 };
-
-#endif

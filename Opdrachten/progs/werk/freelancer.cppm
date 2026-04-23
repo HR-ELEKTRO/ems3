@@ -1,9 +1,7 @@
-#ifndef _HR_BroJZ_Freelancer_
-#define _HR_BroJZ_Freelancer_
+export module freelancer;
+import werknemer;
 
-#include "werknemer.h"
-
-class Freelancer: public Werknemer {
+export class Freelancer: public Werknemer {
 public:
     Freelancer(int n, double s);
     double geef_salaris() const override;
@@ -12,5 +10,3 @@ private:
     double salaris_per_uur;
     double gewerkte_uren;
 };
-
-#endif

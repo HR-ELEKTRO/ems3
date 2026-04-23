@@ -1,4 +1,4 @@
-#include "stukwerker.h"
+module stukwerker;
 
 //  Definieer hier de benodigde memberfuncties
 

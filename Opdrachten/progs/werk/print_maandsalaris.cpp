@@ -1,12 +1,8 @@
-#include <iostream>
-#include <iomanip>
-#include "werknemer.h"
-#include "print_maandsalaris.h"
-
+module print_maandsalaris;
+import std;
+import werknemer;
 using namespace std;
 
 void print_maandsalaris(ostream& out, const Werknemer& w) {
-    out << "Werknemer: " << w.geef_nummer()
-        << " verdient: " << setw(8) << setprecision(2) 
-        << fixed << w.geef_salaris() << " Euro.\n";
+    println(out, "Werknemer: {} verdient: {:>8.2f} Euro.", w.geef_nummer(), w.geef_salaris());
 }

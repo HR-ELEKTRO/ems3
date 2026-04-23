@@ -1,9 +1,8 @@
-#include <iostream>
-#include <iomanip>
-#include "freelancer.h"
-#include "vaste_kracht.h"
-#include "stukwerker.h"
-#include "print_maandsalaris.h"
+import std;
+import freelancer;
+import vaste_kracht;
+import stukwerker;
+import print_maandsalaris;
 
 using namespace std;
 
@@ -15,7 +14,7 @@ int main() {
     f.werk_uren(84); // werknemer 1 werkt (deze maand) 84 uren
     s.produceer_stuks(1687); // werknemer 3 produceert (deze maand) 1687 stuks
     
-    cout << "Maand 1:\n";
+    println("Maand 1:");
     print_maandsalaris(cout, f);
     print_maandsalaris(cout, v);
     print_maandsalaris(cout, s);
@@ -23,7 +22,7 @@ int main() {
     f.werk_uren(13.5); // werknemer 1 werkt (deze maand) 13.5 uren
     s.produceer_stuks(0); // werknemer 3 produceert (deze maand) 0 stuks
     
-    cout << "Maand 2:\n";
+    println("Maand 2:");
     print_maandsalaris(cout, f);
     print_maandsalaris(cout, v);
     print_maandsalaris(cout, s);

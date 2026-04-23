@@ -1,4 +1,4 @@
-#include "werknemer.h"
+module werknemer;
 
 Werknemer::Werknemer(int n): nummer{n} {
 }

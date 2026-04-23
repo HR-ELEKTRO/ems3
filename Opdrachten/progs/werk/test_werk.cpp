@@ -1,9 +1,9 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-#include <sstream>
-#include "freelancer.h"
-#include "vaste_kracht.h"
-#include "print_maandsalaris.h"
+
+import freelancer;
+import vaste_kracht;
+import print_maandsalaris;
 
 using namespace std;
 
@@ -32,7 +32,7 @@ TEST(werk, test1)
 }
 
 /*
-#include "stukwerker.h"
+import stukwerker;
 
 TEST(werk, test2)
 {
@@ -69,7 +69,7 @@ TEST(werk, test2)
 */
 
 /*
-#include "manager.h"
+import manager;
 
 TEST(werk, test3)
 {

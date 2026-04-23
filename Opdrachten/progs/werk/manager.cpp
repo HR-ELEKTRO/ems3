@@ -1,6 +1,5 @@
-#include "manager.h"
-#include <vector>
-
+module manager;
+import std;
 using namespace std;
 
 //  Definieer hier de benodigde memberfuncties

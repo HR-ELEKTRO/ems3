@@ -1,10 +1,9 @@
-#include <iostream>
-#include <iomanip>
-#include "freelancer.h"
-#include "vaste_kracht.h"
-#include "stukwerker.h"
-#include "manager.h"
-#include "print_maandsalaris.h"
+import std;
+import freelancer;
+import vaste_kracht;
+import stukwerker;
+import manager;
+import print_maandsalaris;
 
 using namespace std;
 
