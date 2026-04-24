@@ -1,8 +1,5 @@
-#include <iostream>
-#include <chrono>
-
-#include "stopwatch.h"
-
+module stopwatch;
+import std;
 using namespace std;
 
 Stopwatch::Stopwatch(): running{false} {
@@ -22,7 +19,6 @@ void Stopwatch::stop() {
     }
 }
 
-ostream& operator<<(ostream& o, const Stopwatch& sw) {
-    auto total_time {chrono::duration_cast<chrono::milliseconds>(sw.stop_time - sw.start_time).count()};
-    return o << total_time << " ms";
+chrono::milliseconds Stopwatch::duration() const {
+    return chrono::duration_cast<chrono::milliseconds>(stop_time - start_time);
 }

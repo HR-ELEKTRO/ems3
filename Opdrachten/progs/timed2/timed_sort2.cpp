@@ -1,15 +1,8 @@
-#include <iostream>
-#include <chrono>
-#include <vector>
-#include <algorithm>
-#include <random>
-#include <iterator>
-
-#include "stopwatch.h"
-
+import std;
+import stopwatch;
 using namespace std;
 
-template <typename Element>
+template <totally_ordered Element>
 void selection_sort(vector<Element>& v) {
     for (auto p {v.begin()}; p != v.end(); ++p) {
         auto min {p};
@@ -22,7 +15,7 @@ void selection_sort(vector<Element>& v) {
     }
 }
 
-template <typename Element>
+template <totally_ordered Element>
 void heap_sort(vector<Element>& v) {
 	auto n {v.size()};
     for (decltype(n) i {1}; i < n; ++i) {
@@ -48,7 +41,8 @@ void heap_sort(vector<Element>& v) {
     }
 }
 
-void counting_sort(vector<int>& v) {
+template <totally_ordered Element>
+void counting_sort(vector<Element>& v) {
     // Voeg hier je code toe
 }
 
@@ -58,14 +52,13 @@ int main() {
     uniform_int_distribution<> dist {0, 999};
     int n;
     do {
-        cout << "Geef n (<=0 om te stoppen): ";
+        print("Geef n (<=0 om te stoppen): ");
         cin >> n;
         if (n > 0) {
             vector<int> v(n);
             generate(v.begin(), v.end(), [&dist, &eng]{ return dist(eng); });
             if (n <= 100) {
-                cout << "De random array:\n";
-                copy(v.cbegin (), v.cend (), ostream_iterator<int>{cout , " "});
+                println("De random array: {}", v);
             }
             Stopwatch sw;
             sw.start();
@@ -77,10 +70,9 @@ int main() {
             
             sw.stop();
             if (n <= 100) {
-                cout << "\nDe gesorteerde array:\n";
-                copy(v.cbegin (), v.cend (), ostream_iterator<int>{cout , " "});
+                println("De gesorteerde array: {}", v);
             }
-            cout << "Tijdsduur: " << sw << "\n";
+            println("Tijdsduur: {}", sw.duration());
         }
     } while (n > 0);
 }

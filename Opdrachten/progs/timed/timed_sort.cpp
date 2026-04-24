@@ -1,19 +1,14 @@
-#include <iostream>
-#include <chrono>
-#include <vector>
-#include <algorithm>
-#include <random>
-#include <iterator>
-
-#include "stopwatch.h"
-
+import std;
+import stopwatch;
 using namespace std;
 
-template <typename Iterator>
-void bubble_sort(Iterator begin, Iterator end) {
-    for (Iterator p {--end}; p != begin; --p) {
-        for (Iterator q {begin}; q != p; ++q) {
-            Iterator q_next(q);
+template <ranges::bidirectional_range Range>
+void bubble_sort(Range& range) {
+    auto begin = ranges::begin(range);
+    auto end = ranges::end(range);
+    for (auto p {--end}; p != begin; --p) {
+        for (auto q {begin}; q != p; ++q) {
+            auto q_next(q);
             q_next++;
             if (*q > *q_next) {
                 swap(*q, *q_next);
@@ -28,25 +23,23 @@ int main() {
     uniform_int_distribution<> dist {0, 999};
     int n;
     do {
-        cout << "Geef n (<=0 om te stoppen): ";
+        print("Geef n (<=0 om te stoppen): ");
         cin >> n;
         if (n > 0) {
             vector<int> v(n);
-            generate(v.begin(), v.end(), [&dist, &eng]{ return dist(eng); });
+            ranges::generate(v, [&dist, &eng]{ return dist(eng); });
             if (n <= 100) {
-                cout << "De random array:\n";
-                copy(v.cbegin (), v.cend (), ostream_iterator<int>{cout , " "});
+                println("De random array: {}", v);
             }
             Stopwatch sw;
             sw.start();
-            bubble_sort(v.begin(), v.end());
-            //sort(v.begin(), v.end());
+            bubble_sort(v);
+            // ranges::sort(v);
             sw.stop();
             if (n <= 100) {
-                cout << "\nDe gesorteerde array:\n";
-                copy(v.cbegin (), v.cend (), ostream_iterator<int>{cout , " "});
+                println("De gesorteerde array: {}", v);
             }
-            cout << "Tijdsduur: " << sw << "\n";
+            println("Tijdsduur: {}", sw.duration());
         }
     } while (n > 0);
 }

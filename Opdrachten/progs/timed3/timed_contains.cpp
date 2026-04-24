@@ -1,19 +1,12 @@
-#include <iostream>
-#include <chrono>
-#include <vector>
-#include <algorithm>
-#include <random>
-#include <iterator>
-
-#include "stopwatch.h"
-
+import std;
+import stopwatch;
 using namespace std;
 
 void vul_random_0_999(vector<int>& v) {
     default_random_engine eng;
     eng.seed(chrono::system_clock::now().time_since_epoch().count());
     uniform_int_distribution<> dist {0, 999};
-    generate(v.begin(), v.end(), [&dist, &eng]{ return dist(eng); });
+    ranges::generate(v, [&dist, &eng]{ return dist(eng); });
 }
 
 bool contains_element_method_1(const vector<int>& v, int e) {
@@ -42,14 +35,14 @@ bool contains_element_method_4(const vector<int>& v, int e) {
 
 using function_pointer = bool (*)(const vector<int>& v, int e);
 
-bool test_sorted_vector_contains_element_int(const vector<int>& v, function_pointer f) {
-    if ((*f)(v, v.front() - 1) || (*f)(v, v.back() + 1)) {
-        cout << "Test 0 failed!\n";
+bool test_sorted_vector_contains_element_int(const vector<int>& v, function_pointer fp) {
+    if (fp(v, v.front() - 1) || fp(v, v.back() + 1)) {
+        println("Test 0 failed!");
         return false;
     }
     for (auto i :v) {
-        if (!(*f)(v, i)) {
-            cout << "Test 1 failed!\n";
+        if (!fp(v, i)) {
+            println("Test 1 failed!");
             return false;
         }
     }
@@ -67,34 +60,33 @@ bool test_sorted_container_contains_element(function_pointer f) {
 }
 
 int main() {
-    function_pointer f {&contains_element_method_1};
-    if (test_sorted_container_contains_element(f)) {
+    function_pointer fp {&contains_element_method_1};
+    if (test_sorted_container_contains_element(fp)) {
         size_t n {1};
         while (n > 0) {
-            cout<<"Geef n ( 0 om te stoppen ): ";
+            print("Geef n ( 0 om te stoppen ): ");
             cin >> n;
             if (n > 0) {
                 vector<int> v(n);
                 vul_random_0_999(v);
-                sort(v.begin(), v.end());
+                ranges::sort(v);
                 if (n <= 100) {
-                    copy(v.cbegin (), v.cend (), ostream_iterator<int>{cout , " "});
-                    cout << '\n';
+                    println("{}", v);
                 }
                 int s;
-                cout<<"Geef element om te zoeken: ";
+                print("Geef element om te zoeken: ");
                 cin >> s;
                 Stopwatch sw;
                 sw.start();
-                bool gevonden {(*f)(v, s)};
+                bool gevonden {fp(v, s)};
                 sw.stop();
                 if (gevonden) {
-                    cout << "Element " << s << " gevonden.\n";
+                    println("Element {} gevonden.", s);
                 }
                 else {
-                    cout << "Element " << s << " niet gevonden.\n";
+                    println("Element {} niet gevonden.", s);
                 }
-                cout << "Tijdsduur: " << sw << '\n';
+                println("Tijdsduur: {}", sw.duration());
             }
         }
     }
