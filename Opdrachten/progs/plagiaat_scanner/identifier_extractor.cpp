@@ -1,12 +1,5 @@
-#include <iostream>
-#include <fstream>
-#include <iterator>
-#include <vector>
-#include <string>
-#include <cctype>
-
-#include "identifier_extractor.h"
-
+module identifier_extractor;
+import std;
 using namespace std;
 
 Identifier_extractor::Identifier_extractor(string filename) {

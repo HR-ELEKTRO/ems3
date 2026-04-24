@@ -1,9 +1,5 @@
-#include <iostream>
-#include <iterator>
-#include <string>
-
-#include "identifier_extractor.h"
-
+import std;
+import identifier_extractor;
 using namespace std;
 
 int main(int argc, const char* argv[]) {
@@ -12,12 +8,12 @@ int main(int argc, const char* argv[]) {
         filename = argv[1];
     }
     else {
-        cout << "Geef filenaam: ";
+        print("Geef filenaam: ");
         cin >> filename;
     }
     Identifier_extractor ie {filename};
     auto ids {ie.get_identifiers()};
     ostream_iterator<string> iout {cout, " "};
-    copy(ids.cbegin(), ids.cend(), iout);
-    cout << endl;
+    ranges::copy(ids, iout);
+    println();
 }
