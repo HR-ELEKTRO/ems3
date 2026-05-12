@@ -1,4 +1,4 @@
-export module tijd1;
+export module tijd2;
 import std;
 using namespace std;
 
